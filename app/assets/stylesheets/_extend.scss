@@ -1,0 +1,38 @@
+.invertBody {
+	background-color: #fff;
+	
+	.nav_control {
+		a {
+			color: #aaa !important;
+		}
+	}
+
+}
+
+.clearfix {
+    *zoom: 1;
+
+    &:after,
+    &:before {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+.navBar {
+	width: 100%;
+	.item {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.right {
+		display: inline-block;
+		vertical-align: top;
+		float: right;
+	}
+}

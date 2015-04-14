@@ -1,0 +1,264 @@
+canvas#dots.fadeIn.delay
+.title.fadeIn.delay
+  h1
+    | I'm 
+    span.highlight
+      | Cassius Chen
+    | .
+
+
+- content_for :script do
+
+  javascript:
+    var MOVE_AREA = 30;
+    var EFFECT_AREA = 300;
+    var PARTICLES = {
+      small: 10,
+      medium: 3,
+      big: 5
+    };
+
+    var onlyTouch = false;
+
+    
+    var mouse = {x:0, y:0};
+    var particles = {
+      small: [],
+      medium: [
+        dot(148,337,6),
+        dot(37,290,4),
+        dot(254,24,4),
+        dot(329,96,2),
+        dot(403,28,1),
+        dot(158,41,1),
+        dot(135,133,1),
+        dot(628,1,1),
+        dot(900.134,1),
+        dot(640,168,1),
+        dot(857,298,1),
+        dot(657,444,1),
+        dot(535,496,1),
+        dot(388,347,1),
+        dot(407,464,1),
+        dot(245,485,1),
+        dot(222,316,1),
+        dot(239,389,2),
+        dot(413,225,2),
+        dot(740,183,2),
+        dot(785,87,2),
+        dot(891,395,2)
+      ],
+      big: [dot(90,197,30),
+            dot(200,118,13),
+            dot(345,168,20),
+            dot(453,87,10),
+            dot(521,197,7),
+            dot(623,98,35),
+            dot(847,226,20),
+            dot(745,330,10),
+            dot(775,442,35),
+            dot(618,440,10),
+            dot(453,435,20),
+            dot(305,380,10),
+            dot(186,435,30)
+      ]
+    };
+
+    var ORIGIN_DOTS = {
+      small: [],
+      medium: [
+        dot(148,337,6),
+        dot(37,290,4),
+        dot(254,24,4),
+        dot(329,96,2),
+        dot(403,28,1),
+        dot(158,41,1),
+        dot(135,133,1),
+        dot(628,1,1),
+        dot(900.134,1),
+        dot(640,168,1),
+        dot(857,298,1),
+        dot(657,444,1),
+        dot(535,496,1),
+        dot(388,347,1),
+        dot(407,464,1),
+        dot(245,485,1),
+        dot(222,316,1),
+        dot(239,389,2),
+        dot(413,225,2),
+        dot(740,183,2),
+        dot(785,87,2),
+        dot(891,395,2)
+      ],
+      big: [dot(90,197,30),
+            dot(200,118,13),
+            dot(345,168,20),
+            dot(453,87,10),
+            dot(521,197,7),
+            dot(623,98,35),
+            dot(847,226,20),
+            dot(745,330,10),
+            dot(775,442,35),
+            dot(618,440,10),
+            dot(453,435,20),
+            dot(305,380,10),
+            dot(186,435,30)
+      ]
+    };
+
+    lines = [
+      [0,1],
+      [0,2],
+      [0,12],
+      [1,2],
+      [1,12],
+      [1,11],
+      [2,12],
+      [2,11],
+      [2,10],
+      [2,3],
+      [2,4],
+      [3,5],
+      [3,4],
+      [4,11],
+      [4,10],
+      [4,5],
+      [4,6],
+      [5,6],
+      [5,7],
+      [5,8],
+      [5,10],
+      [6,7],
+      [6,8],
+      [6,10],
+      [7,9],
+      [7,11],
+      [9,10],
+      [10,11],
+      [11,12]
+    ]
+
+    function dot(x,y,size) {
+      return {
+        x: x,
+        y: y,
+        size: size
+      };
+    }
+
+    var color = "#38f";
+    var lineColor = "#333";
+    var canvas = document.getElementById('dots');
+    var context;
+    
+    if (canvas && canvas.getContext) {
+      context = canvas.getContext('2d');
+
+      Initialize();
+    }
+    
+    function Initialize() {
+      canvas.addEventListener('mousemove', MouseMove, false);
+      window.addEventListener('mousedown', MouseDown, false);
+      window.addEventListener('resize', ResizeCanvas, false);
+      //setInterval( TimeUpdate, 40 );
+      
+      ResizeCanvas();
+      UpdateCanvas();
+    }
+    
+    function UpdateCanvas() {
+      
+      context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      var dots = particles.medium.concat(particles.big);
+      var originDots = ORIGIN_DOTS.medium.concat(ORIGIN_DOTS.big);
+      var dot, origin;
+      for(var i = 0; i < dots.length; i++) {
+        dot = dots[i];
+        origin = originDots[i];
+        dotMoveWhenMouseMove(dot, origin);
+      }
+
+      drawAllLines();
+
+      drawAllDots();
+    }
+
+    function drawDot(dot) {
+      context.fillStyle = color;
+      context.beginPath();
+      context.arc(dot.x, dot.y, dot.size, 0, Math.PI*2, true);
+      context.closePath();
+      context.fill();
+    }
+
+    function drawAllDots() {
+      var dots = particles.medium.concat(particles.big);
+
+      for( var i = 0; i < dots.length; i++ ) {
+        particle = dots[i];
+        drawDot(particle);
+      }
+    }
+
+    function drawLine(d1, d2) {
+      context.strokeStyle = lineColor;
+      context.moveTo(d1.x,d1.y);
+      context.lineTo(d2.x, d2.y);
+      context.stroke();
+    }
+
+    function drawAllLines() {
+      var o1, o2;
+      for (var t = 0; t < lines.length; t++) {
+        o1 = lines[t][0];
+        o2 = lines[t][1];
+
+        drawLine(particles.big[o1], particles.big[o2]);
+      }
+    }
+    
+    function MouseMove(e) {
+      mouse.x = e.layerX;
+      mouse.y = e.layerY;
+
+      UpdateCanvas();
+    }
+
+    function dotMoveWhenMouseMove(dot, originDot) {
+      var distance = DistanceBetween(dot, mouse);
+
+      if(distance <= EFFECT_AREA) {
+        var rate;
+        if(distance >= EFFECT_AREA * 0.5) {
+          rate = (EFFECT_AREA - distance) / EFFECT_AREA;
+        } else {
+          rate = distance / EFFECT_AREA;
+        }
+        
+        var xp = originDot.x > mouse.x ? 1 : (-1);
+        var yp = originDot.y > mouse.y ? 1 : (-1);
+        dot.x = originDot.x + rate * MOVE_AREA * xp;
+        dot.y = originDot.y + yp * MOVE_AREA * rate;
+        dot.size = originDot.size + 15 * (EFFECT_AREA - distance) / EFFECT_AREA;
+      } else {
+        dot = originDot;
+      }
+    }
+    
+    function MouseDown(e) {
+      // Some code here
+    }
+    
+    function ResizeCanvas(e) {
+      canvas.width = 960;
+      canvas.height = 600;
+      UpdateCanvas();
+    }
+
+    function DistanceBetween(p1,p2) {
+      var dx = p2.x-p1.x;
+      var dy = p2.y-p1.y;
+      return Math.sqrt(dx*dx + dy*dy) * 1.2;
+    }

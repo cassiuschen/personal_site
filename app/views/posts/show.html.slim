@@ -1,0 +1,26 @@
+.container
+  .header
+    h1.title = @post.title
+    h5.subtitle = @post.subtitle
+  p
+    = @post.content
+
+- content_for :tab do
+
+  .controlTab
+    .item.name
+      a
+        | Cassius Chen
+      span.timeago
+        | 2 days ago
+    .right
+      .item
+        | 996 People read
+      a.item
+        i.fa.fa-heart-o
+      a.item
+        i.fa.fa-bookmark-o
+      a.item
+        i.fa.fa-share-alt
+      a.item.tab
+        | NEXT PAGE

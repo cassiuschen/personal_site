@@ -1,0 +1,148 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ * require_tree .
+ *= require_self
+ */
+
+$white: #fff;
+$black: #777;
+$blue: #38f;
+$bg_black: #242424;
+
+
+
+html, body {
+	font-family: freight-text-pro, Georgia, Cambria, 'Times New Roman', Times, serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item {
+	font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+* {
+	letter-spacing: -0.02em;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga" on;
+	color: rgba(0,0,0,0.8);
+	font-size: 18px;
+	line-height: 1.4;
+	-webkit-transition-property: all;
+	transition-property: all;
+	transition-duration: 0.18s;
+}
+
+a, a:hover, a:visited, a:active, a:link {
+	text-decoration: none !important;
+}
+
+.nav_control {
+	@extend .navBar;
+	position: absolute;
+	top: 0;
+	height: 30px;
+	padding-top: 35px;
+	padding-bottom: 0;
+	a {
+		color: $white;
+		opacity: .7;
+		font-size: 18px;
+		line-height: 24px;
+	}
+	a i {
+		font-size: 24px;
+		color: inherit;
+	}
+
+	a:hover, a:active {
+		opacity: 1;
+		cursor: pointer;
+	}
+	.item:first-child {
+		margin-left: 35px;
+	}
+
+	.item:last-child {
+		margin-right: 35px;
+	}
+}
+
+.controlTab {
+	@extend .navBar;
+	height: 50px;
+	background-color: $white;
+	border: 0px solid #eee;
+	border-top-width: 1px;
+	position: fixed;
+	bottom: 0;
+	.item:first-child {
+		margin-left: 35px;
+	}
+
+	.item {
+		padding: 13px 10px;
+		font-size: 14px;
+		line-height: 24px;
+		color: #999;
+
+		&:hover {
+			color: #777;
+		}
+
+		i {
+			color: inherit;
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		&.name {
+			a {
+				font-size: inherit;
+				color: $blue;
+			}
+
+			.timeago {
+				color: #999;
+				font-size: 14px;
+				line-height: 24px;
+
+				&:before {
+					content: '·';
+					margin: 0 5px;
+				}
+			}
+		}
+
+		&.tab {
+			padding-left: 35px;
+			padding-right: 35px;
+			margin-left: 10px;
+			border-left: 1px solid #eee;
+		}
+	}
+
+}
+
+@import "extend";
+@import "index";
+@import "animation";
+@import "container";
+@import "post";
+
+

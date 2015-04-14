@@ -1,0 +1,8 @@
+h1 Posts#index
+p Find me in app/views/posts/index.html.slim
+
+- for post in @posts
+  li
+    = post.title
+    |  /  
+    = link_to "show", post_path(post)

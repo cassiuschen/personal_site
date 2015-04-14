@@ -28,7 +28,7 @@ html, body {
 	padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item {
+h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item, .btn, a {
 	font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
 }
 
@@ -70,6 +70,22 @@ a, a:hover, a:visited, a:active, a:link {
 		color: inherit;
 	}
 
+	a.avatar {
+		position: absolute;
+		top: 35px;
+		left: calc(50% - 30px);
+		height: 60px;
+		width: 60px;
+		border-radius: 60px;
+		border:none;
+
+		img {
+			width: 100%;
+			border-radius: 30px;
+		}
+
+	}
+
 	a:hover, a:active {
 		opacity: 1;
 		cursor: pointer;
@@ -101,6 +117,21 @@ a, a:hover, a:visited, a:active, a:link {
 		line-height: 24px;
 		color: #999;
 
+		* {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.avatar {
+			vertical-align: top;
+			width: 24px;
+			height: 24px;
+			margin-right: 10px;
+			img {
+				width: 24px;
+			}
+		}
+
 		&:hover {
 			color: #777;
 		}
@@ -115,6 +146,7 @@ a, a:hover, a:visited, a:active, a:link {
 			a {
 				font-size: inherit;
 				color: $blue;
+				line-height: 24px;
 			}
 
 			.timeago {
@@ -144,5 +176,6 @@ a, a:hover, a:visited, a:active, a:link {
 @import "animation";
 @import "container";
 @import "post";
+@import "element";
 
 

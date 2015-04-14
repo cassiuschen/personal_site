@@ -1,14 +1,45 @@
+- content_for :nav_info do
+  a.avatar
+    = image_tag 'avatar.jpg'
+
 .container
   .header
     h1.title = @post.title
     h5.subtitle = @post.subtitle
   p
     = @post.content
+  .actions.clearfix
+    a.btn.blue
+      i.fa.fa-heart-o
+      |  Like
+    a.btn.right
+      i.fa.fa-angle-down
+    a.btn.right
+      i.fa.fa-bookmark-o
+    a.btn.right
+      i.fa.fa-share-alt
+  .tags
+    span.title TAGED IN
+    - 4.times
+      a.tag
+        | Test
+.info
+  .container
+    .author
+      a.avatar
+        = image_tag 'avatar.jpg'
+      .text
+        h3.name
+          | Cassius Chen
+        p
+          | Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward).
 
 - content_for :tab do
 
   .controlTab
     .item.name
+      a.avatar.round
+        = image_tag 'avatar.jpg'
       a
         | Cassius Chen
       span.timeago
@@ -24,3 +55,5 @@
         i.fa.fa-share-alt
       a.item.tab
         | NEXT PAGE
+  style
+    | body>.info {padding-bottom: 100px;}

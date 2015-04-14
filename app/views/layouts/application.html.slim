@@ -40,7 +40,9 @@ html
     .nav_control
       a.menu.item.fadeIn
         i.fa.fa-th-large
+      = yield :nav_info
       .right
+        = yield :nav_action
         a.name.item.fadeIn
           | Cassius Chen
     = yield

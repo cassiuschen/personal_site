@@ -1,0 +1,18 @@
+.tag {
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px 15px;
+	font-size: 14px;
+	line-height: 20px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	background-color: #f7f7f7;
+	color: #aaa;
+	margin-right: 12px;
+
+	&:hover, &:active {
+		border-color: lighten($blue,20%);
+		background-color: lighten($blue, 40%);
+		color: $blue;
+	}
+}

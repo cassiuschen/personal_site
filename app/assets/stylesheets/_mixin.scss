@@ -1,0 +1,21 @@
+@mixin translateX($width) {
+  -webkit-transform: translateX($width);
+  transform: translateX($width);
+}
+
+@mixin blur($width) {
+    filter: asset-url('blur.svg#blur'); /* FireFox, Chrome, Opera */
+    -webkit-filter: blur($width); /* Chrome, Opera */
+       -moz-filter: blur($width);
+        -ms-filter: blur($width);   
+            filter: blur($width);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+@mixin fadeIn($delay) {
+  @extend .fadeIn;
+  transform-delay: $delay;
+  -webkit-transform-delay: $delay;
+  animation-delay: $delay;
+  -webkit-animation-delay: $delay;
+}

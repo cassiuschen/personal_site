@@ -37,14 +37,16 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   body class="#{action_name} #{controller_name}"
-    .nav_control
-      a.menu.item.fadeIn
-        i.fa.fa-th-large
-      = yield :nav_info
-      .right
-        = yield :nav_action
-        a.name.item.fadeIn
-          | Cassius Chen
-    = yield
-    = yield :tab
+    = render 'layouts/nav'
+    main
+      .nav_control
+        a.menu.item.fadeIn#sidebar_control
+          i.fa.fa-th-large
+        = yield :nav_info
+        .right
+          = yield :nav_action
+          a.name.item.fadeIn
+            | Cassius Chen
+      = yield
+      = yield :tab
     = yield :script

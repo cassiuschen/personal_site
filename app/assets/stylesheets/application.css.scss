@@ -26,6 +26,7 @@ html, body {
 	font-family: freight-text-pro, Georgia, Cambria, 'Times New Roman', Times, serif;
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item, .btn, a {
@@ -45,7 +46,7 @@ h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item, .btn, a
 	line-height: 1.4;
 	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.18s;
+	transition-duration: 0.28s;
 }
 
 a, a:hover, a:visited, a:active, a:link {
@@ -60,7 +61,7 @@ a, a:hover, a:visited, a:active, a:link {
 	padding-top: 35px;
 	padding-bottom: 0;
 	a {
-		color: $white;
+		color: #aaa;
 		opacity: .7;
 		font-size: 18px;
 		line-height: 24px;
@@ -171,11 +172,21 @@ a, a:hover, a:visited, a:active, a:link {
 
 }
 
+main {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	margin: 0;
+	padding: 0;
+}
+
 @import "extend";
+@import "mixin";
 @import "index";
 @import "animation";
 @import "container";
 @import "post";
 @import "element";
+@import "nav";
 
 

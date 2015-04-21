@@ -2,6 +2,10 @@ body.posts {
 	&.show {
 		@extend .invertBody;
 
+		.header, p {
+			@extend .fadeIn;
+		}
+
 		.header {
 			text-align: center;
 			width: 630px;
@@ -18,6 +22,7 @@ body.posts {
 				width: 100%;
 				max-width: 100%;
 				text-align: center;
+				
 			}
 			.subtitle {
 				font-size: 32px;
@@ -28,6 +33,7 @@ body.posts {
 				width: 100%;
 				max-width: 100%;
 				text-align: center;
+				
 			}
 
 		}

@@ -5,8 +5,18 @@
 }
 
 body.home.index {
+	canvas {
+		opacity: 0.3;
+
+		&:hover {
+			opacity: 0.6;
+		}
+		img {
+			width: 20px !important;
+		}
+	}
 	overflow: hidden;
-	background-color: $bg_black;
+	background-color: #fafafa;
 	.title {
 		h1 {
 			text-align: center;
@@ -15,13 +25,14 @@ body.home.index {
 			top: calc((100vh - 64px)/2);
 			font-size: 64px;
 			line-height: 77px;
-			color: $white;
+			color: #777;
 			margin:0;
 			.highlight {
 				background-color: $blue !important;
 				color: $white !important;
 				font-size: 64px !important;
 				padding: 0 15px;
+				color: $white;
 
 			}
 		}
@@ -33,5 +44,37 @@ body.home.index {
 		height: 200px;
 		width: 100%;
 
+	}
+
+	.control-bar {
+		position: fixed;
+		bottom: 0;
+		@extend .navBar;
+		margin: 0 auto;
+		font-size: 14px;
+		text-align: center;
+		font-size: 0;
+
+		.action {
+			width: 200px;
+			padding: 10px;
+			border-top: 15px solid $blue;
+			background-color: #eee;
+			font-size: 14px;
+			color: #777;
+			box-shadow: 0 -1px 3px #eee;
+			
+			&.hide {
+				-webkit-transform: translateY(40px);
+				transform: translateY(40px);
+			}
+
+			&:hover, &.hover {
+				-webkit-transform: translateY(0px);
+				transform: translateY(0px);
+			}
+		}
+
+		
 	}
 }

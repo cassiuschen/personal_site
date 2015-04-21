@@ -1,15 +1,40 @@
 canvas#dots.fadeIn.delay
+  = image_tag 'icon/code-01.png', id: 'code'
+  = image_tag 'icon/photo-01-01.png', id: 'photo'
+  = image_tag 'icon/print-01.png', id: 'print'
+  = image_tag 'icon/edu-01.png', id: 'edu'
+  = image_tag 'icon/book-01.png', id: 'book'
+  = image_tag 'icon/pencil-01.png', id: 'pencil'
+  = image_tag 'icon/video-01.png', id: 'video'
 .title.fadeIn.delay
-  h1
-    | I'm 
-    span.highlight
-      | Cassius Chen
-    | .
+  h1.typed
+  coffee:
+    $ ->
+      $(".typed").typed
+        strings: [
+          "I'm <span class='highlight'>Cassius Chen</span>.^2000",
+          "I'm a <span class='highlight'>Rubyist</span>.^2000",
+          "I'm a <span class='highlight'>UI Designer</span>.^2000",
+          "I'm a <span class='highlight'>Frontend Engineer</span>.^2000",
+          "I'm <span class='highlight'>Cassius Chen</span>.",
+        ]
+        contentType: 'html'
+        typeSpeed: 30
+        backSpeed: 20
+        showCursor: false
+
+.control-bar
+  - 4.times
+    a.action.item
+      | SomeAction
 
 
 - content_for :script do
 
   javascript:
+    setTimeout(function() {
+      $('.control-bar .action').addClass('hide');
+    }, 2000);
     var MOVE_AREA = 30;
     var EFFECT_AREA = 300;
     var PARTICLES = {
@@ -106,7 +131,23 @@ canvas#dots.fadeIn.delay
       ]
     };
 
-    lines = [
+    var images = [
+      'code',
+      ,
+      'book',
+      ,
+      ,
+      'photo',
+      'print',
+      ,
+      'video',
+      ,
+      'edu',
+      ,
+      'pencil'
+    ];
+
+    var lines = [
       [0,1],
       [0,2],
       [0,12],
@@ -146,15 +187,15 @@ canvas#dots.fadeIn.delay
       };
     }
 
-    var color = "#38f";
-    var lineColor = "#333";
+    var color = "rgba(51,136,237,0.6)";
+    var lineColor = "#eee";
     var canvas = document.getElementById('dots');
     var context;
     
     if (canvas && canvas.getContext) {
       context = canvas.getContext('2d');
-
       Initialize();
+      UpdateCanvas();
     }
     
     function Initialize() {
@@ -164,7 +205,8 @@ canvas#dots.fadeIn.delay
       //setInterval( TimeUpdate, 40 );
       
       ResizeCanvas();
-      UpdateCanvas();
+      //UpdateCanvas();
+
     }
     
     function UpdateCanvas() {
@@ -183,6 +225,7 @@ canvas#dots.fadeIn.delay
       drawAllLines();
 
       drawAllDots();
+      drawAllImages();
     }
 
     function drawDot(dot) {
@@ -193,12 +236,31 @@ canvas#dots.fadeIn.delay
       context.fill();
     }
 
+    function drawImage(id, dot) {
+      var img = document.getElementById(id);
+      var size = dot.size / 2;
+      context.drawImage(img, dot.x - size, dot.y - size, size * 2, size * 2);
+    }
+
+    
+
     function drawAllDots() {
       var dots = particles.medium.concat(particles.big);
 
       for( var i = 0; i < dots.length; i++ ) {
         particle = dots[i];
         drawDot(particle);
+      }
+    }
+
+    function drawAllImages() {
+      var dots = particles.big;
+      
+      for( var i = 0; i < dots.length; i++ ) {
+        var particle = dots[i], img = images[i];
+        if(img != null) {
+          drawImage(img,particle);
+        }
       }
     }
 
@@ -248,7 +310,6 @@ canvas#dots.fadeIn.delay
     }
     
     function MouseDown(e) {
-      // Some code here
     }
     
     function ResizeCanvas(e) {
@@ -262,3 +323,5 @@ canvas#dots.fadeIn.delay
       var dy = p2.y-p1.y;
       return Math.sqrt(dx*dx + dy*dy) * 1.2;
     }
+
+    //UpdateCanvas();

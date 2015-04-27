@@ -52,6 +52,17 @@ body.posts {
 
 		.actions {
 			width: 100%;
+
+			span {
+				display: inline-block;
+				vertical-align: top;
+				margin-left: 10px;
+				height: 20px;
+				padding: 10px 0;
+				color: #aaa;
+				line-height: 20px;
+				font-size: 14px;
+			}
 		}
 
 		.tags {

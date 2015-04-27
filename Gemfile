@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-
+gem 'redis-objects'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -42,6 +42,10 @@ gem 'rails-admin'
 
 gem 'font-awesome-rails'
 gem 'nprogress-rails'
+
+# Uploader
+gem 'carrierwave'
+gem 'carrierwave-qiniu'
 
 gem 'mongoid_auto_increment_id'
 gem 'letter_opener'

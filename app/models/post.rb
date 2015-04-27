@@ -1,11 +1,12 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Likeable
+  include Countable
   field :title, type: String
   field :uid, type: String, default: ->{"#{Time.now.year}#{Time.now.month.to_s.rjust(2,'0')}#{Time.now.day.to_s.rjust(2,'0')}-#{char.gsub(' ','-')}"}
   field :subtitle, type: String
   field :content, type: String
-  field :like, type: Integer, default: 0
   field :char, type: String
 
   def created_at_data
@@ -18,15 +19,5 @@ class Post
 
   def to_param  
     "#{created_at_data}-#{short_name}"  
-  end
-
-  def like
-    self.like += 1
-    self.save
-  end
-
-  def dislike
-    self.like -= 1
-    self.save
   end
 end

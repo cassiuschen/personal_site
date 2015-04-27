@@ -9,9 +9,12 @@
   p
     = @post.content
   .actions.clearfix
-    a.btn.blue
+    = link_to like_post_path(@post), class: "btn blue #{(@liked)?('active'):('')}", id: 'big_like', remote: true
       i.fa.fa-heart-o
       |  Like
+    span#liked_people
+      = @post.like
+      | People Liked.
     a.btn.right
       i.fa.fa-angle-down
     a.btn.right
@@ -46,8 +49,9 @@
         | 2 days ago
     .right
       .item
-        | 996 People read
-      a.item
+        = @post.viewer
+        |  People read
+      = link_to like_post_path(@post), class: "item #{(@liked)?('active'):('')}", id: 'liked', remote: true
         i.fa.fa-heart-o
       a.item
         i.fa.fa-bookmark-o

@@ -20,7 +20,7 @@
 #= require notificationFX
 #= require nprogress
 #= require nprogress-turbolinks
-#= require nprogress-ajax-prototype
+# require nprogress-ajax-prototype
 #= require typed
 # require_tree .
 
@@ -58,7 +58,7 @@ window.notification =
 
 
 $(document).on 'page:change', ->
-  console.log 'page:change'
+  console.log 'init'
   window.base.init()
 
 $(document).on 'page:load', ->

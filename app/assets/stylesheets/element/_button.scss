@@ -25,6 +25,11 @@
 	&.blue {
 		color: $blue;
 		border-color: $blue;
+
+		&.active {
+			color: $red;
+			border-color: $red;
+		}
 	}
 
 	&.right {

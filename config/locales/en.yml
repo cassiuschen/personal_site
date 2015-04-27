@@ -21,5 +21,5 @@
 
 en:
   post:
-  	like: Thanks for ranking this post!
-  	dislike: Oops~! Seems like I didn't do a fine job.
+    like: "Thanks for ranking this post!"
+    dislike: "Oops~! Seems like I didn't do a fine job."

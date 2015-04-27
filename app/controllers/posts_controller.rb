@@ -5,18 +5,19 @@ class PostsController < ApplicationController
   end
 
   def show
-    flash[:notice] = "TEST NOTICE"
+    @liked = liked?
+    @post.visit
   end
 
   def like
-    unless session[:liked_posts] and session[:liked_posts].include? @post.id 
-      @post.like
-      session[:liked_posts] ||= []
-      session[:liked_posts] += [@post.id]
+    unless liked?
+      @post.do_like
+      session["liked_#{@post.id}".to_sym] = @post.id
+      puts "liked_#{@post.id}".to_sym, session["liked_#{@post.id}".to_sym]
       @flag = :like
     else
       @post.dislike
-      session[:liked_posts] -= [@post.id]
+      session["liked_#{@post.id}".to_sym] = nil
       @flag = :dislike
     end
   end
@@ -24,5 +25,13 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.where(uid: params[:id]).last
+  end
+
+  def liked?
+    if @post
+      !!(session["liked_#{@post.id}".to_sym])
+    else
+      false
+    end
   end
 end

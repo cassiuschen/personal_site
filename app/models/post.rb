@@ -19,4 +19,14 @@ class Post
   def to_param  
     "#{created_at_data}-#{short_name}"  
   end
+
+  def like
+    self.like += 1
+    self.save
+  end
+
+  def dislike
+    self.like -= 1
+    self.save
+  end
 end

@@ -11,17 +11,56 @@
 # about supported directives.
 #
 #= require jquery
+#= require jquery.turbolinks
 #= require jquery_ujs
 #= require turbolinks
+#= require classie
+#= require modernizr
+#= require snap-svg
+#= require notificationFX
+#= require nprogress
+#= require nprogress-turbolinks
+#= require nprogress-ajax-prototype
 #= require typed
 # require_tree .
 
+NProgress.configure
+  showSpinner: false
+  ease: 'ease',
+  speed: 500
+
 window.sidebarOpen = false
-$ ->
-  $("#sidebar_control").click ->
-    $('body').toggleClass "nav-open"
-    window.sidebarOpen = !(window.sidebarOpen)
-    if window.sidebarOpen == true
-      $('.dimmer').click ->
-        $('body').removeClass "nav-open"
+
+window.base = 
+  sideBarToggle: ->
+    $("#sidebar_control").click ->
+      $('body').toggleClass "nav-open"
+      window.sidebarOpen = !(window.sidebarOpen)
+      if window.sidebarOpen == true
+        $('.dimmer').click ->
+          $('body').removeClass "nav-open"
+  init: ->
+    window.sidebarOpen = false
+    window.base.sideBarToggle()
+
+window.notification = 
+  info : (text) ->
+    notification = new NotificationFx
+      wrapper : document.getElementsByTagName("main")[0]
+      message : "<p>#{text}</p>"
+      layout : 'growl'
+      effect : 'jelly'
+      type : 'notice'
+      onClose : ->
+        console.log 'close a notification'
+
+    notification.show()
+
+
+$(document).on 'page:change', ->
+  console.log 'page:change'
+  window.base.init()
+
+$(document).on 'page:load', ->
+  console.log 'page:load'
 

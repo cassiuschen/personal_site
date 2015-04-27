@@ -5,9 +5,20 @@ class PostsController < ApplicationController
   end
 
   def show
+    flash[:notice] = "TEST NOTICE"
   end
 
   def like
+    unless session[:liked_posts] and session[:liked_posts].include? @post.id 
+      @post.like
+      session[:liked_posts] ||= []
+      session[:liked_posts] += [@post.id]
+      @flag = :like
+    else
+      @post.dislike
+      session[:liked_posts] -= [@post.id]
+      @flag = :dislike
+    end
   end
 
   private

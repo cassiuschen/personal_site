@@ -24,7 +24,8 @@ canvas#dots.fadeIn.delay
         showCursor: false
 
 .control-bar
-  - 4.times
+  = link_to 'Blog', posts_path, class: 'action item'
+  - 3.times
     a.action.item
       | SomeAction
 

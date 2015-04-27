@@ -1,8 +1,21 @@
-h1 Posts#index
-p Find me in app/views/posts/index.html.slim
+- content_for :nav_info do
+  .title.item
+    | Blog
+  .input.item.icon
+    input.search placeholder="Search..."
+    i.fa.fa-search
 
-- for post in @posts
-  li
-    = post.title
-    |  /  
-    = link_to "show", post_path(post)
+
+
+
+.container
+  .things
+    - 12.times
+      - for post in @posts
+        = link_to post_path(post), class: 'thing'
+          .content
+            .title
+              = post.title
+            .preview
+              = post.content
+      

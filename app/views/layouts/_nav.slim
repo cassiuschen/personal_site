@@ -5,8 +5,8 @@ nav#sidebar
     .name.title
      | Cassius Chen
   .links
-    - 4.times
+    = link_to 'Blog' , posts_path, class: 'link'
+    - 3.times
       a.link
-        i.fa.fa-heart
-        | 测试
+        | test
 .dimmer

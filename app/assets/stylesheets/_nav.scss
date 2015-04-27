@@ -6,12 +6,14 @@ nav#sidebar {
   top: 0;
   left: 0;
   z-index: 10000;
-  background-color: rgba(245,245,245,0.9);
-  box-shadow: 1px 0 3px #eee;
+  background-color: #f7f7f7;
+  //box-shadow: 1px 0 3px #eee;
+  border-right: 1px solid #eee;
   .nav-header {
     text-align: center;
     padding-top: 40px;
-    background-color: rgba(200,200,200,0.9);
+    background-color: #eee;
+    padding-bottom: 30px;
     
 
     .avatar {
@@ -25,31 +27,30 @@ nav#sidebar {
         border-radius: 100px;
         border: 1.5px solid #aaa;
         box-shadow: 0 0 2px #aaa;
+
       }
     }
 
     .name {
       color: #777;
-      margin-bottom: 30px;
-    }
-
-    &:after {
-      content: ' ';
-      display: block;
-      width: 100%;
-      border-bottom: 1px solid rgba(200,200,200,0.9);
+      font-size: 18px;
+      line-height: 25px;
     }
   }
 
   .links {
+    padding: 15px;
     .link {
       display: block;
-      height: 40px;
-      font-size: 16px;
+      padding: 12px;
       line-height: 20px;
-      margin: 0;
-      padding: 10px;
-      padding-left: 25px;
+      color: #aaa;
+      text-align: center;
+      font-size: 14px;
+
+      &:hover {
+        color: #777;
+      }
     }
   }
 }

@@ -11,9 +11,16 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require notification
  * require_tree .
  *= require_self
  */
+
+$nprogress-color: #f1f1f1;
+$nprogress-height: 10px;
+$nprogress-zindex: 10100;
+
+@import 'nprogress';
 
 $white: #fff;
 $black: #777;
@@ -98,6 +105,57 @@ a, a:hover, a:visited, a:active, a:link {
 	.item:last-child {
 		margin-right: 35px;
 	}
+
+	.item.title {
+		position: absolute;
+		top: 35px;
+		left: calc(50vw - 25px);
+		font-size: 18px;
+		line-height: 24px;
+		color: #aaa;
+	}
+	
+	.item.input {
+		box-sizing: border-box;
+		position: relative;
+		font-size: 14px;
+		input {
+			border: 0px solid #eee;
+			border-radius: 15px;
+			line-height: 24px;
+			padding: 0 15px;
+			width: 100px;
+			height: 24px;
+			background-color: #eee;
+			margin-left: 25px;
+			font-size: inherit;
+			color: #777;
+
+			&:focus {
+				width: 180px;
+			}
+		}
+
+		&.icon {
+			i.fa {
+				position: absolute;
+				top: 50%;	
+				text-align: center;
+				right: 0;
+				margin: 0;
+				margin-top: -0.5em;
+				height: 100%;
+				width: 2.9em;
+				opacity: .5;
+				font-size: 1em;
+			}
+
+			input {
+				padding-right: 35px;
+			}
+		}
+	}
+	
 }
 
 .controlTab {
@@ -187,6 +245,7 @@ main {
 @import "container";
 @import "post";
 @import "element";
+@import "things";
 @import "nav";
 
 

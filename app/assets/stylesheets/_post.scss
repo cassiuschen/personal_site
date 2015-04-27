@@ -1,4 +1,9 @@
 body.posts {
+	&.index {
+		.container {
+			margin-top: 120px;
+		}
+	}
 	&.show {
 		@extend .invertBody;
 

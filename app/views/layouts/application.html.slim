@@ -6,7 +6,7 @@ html
       | Cassius Chen
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
-    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, user-scalable=no"
     meta name="author" content="chzsh1995@gmail.com"
     /meta name="description" content="#{page_description}"
     /meta name="keywords" content="#{page_keywords}"
@@ -46,7 +46,7 @@ html
         = yield :nav_info
         .right
           = yield :nav_action
-          a.name.item.fadeIn
+          a.name.item.fadeIn.hide-xm
             | Cassius Chen
       = yield
       = yield :tab

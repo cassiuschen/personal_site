@@ -7,14 +7,14 @@ body.posts {
 	&.show {
 		@extend .invertBody;
 
-		.header, p {
+		.header, article {
 			@extend .fadeIn;
 		}
 
 		.header {
 			text-align: center;
 			width: 630px;
-			margin-top: 130px;
+			margin-top: 110px;
 			margin-left: auto;
 			margin-right: auto;
 			margin-bottom: 40px;
@@ -87,7 +87,7 @@ body.posts {
 				background-color: #f7f7f7;
 				border-radius: 4px;
 				padding: 5px 8px;
-				font-size: inherit;
+				font-size: inherit !important;
 				margin: 0 3px;
 
 				&:hover {
@@ -100,11 +100,13 @@ body.posts {
 				background-color: #f7f7f7;
 				border-radius: 8px;
 				overflow-y: auto;
+				font-size: inherit;
 				code {
 					background:none;
 					margin: 0;
 					color: #777;
 					padding: 0;
+					font-size: inherit;
 
 					&:hover {
 						background: none;
@@ -187,17 +189,17 @@ body.posts {
 			padding-top: 38px;
 
 			.author {
-				width: 630px;
+				@extend .clearfix;
+				width: 500px;
 				margin: 0 auto;
 
 				.avatar, .text {
 					display: inline-block;
-					vertical-align: top;
 				}
 
 				.avatar {
-					width: 100px;
-					height: 100px;
+					width: 20%;
+					float: left;
 					img {
 						width: 100%;
 						border-radius: 8px;
@@ -205,12 +207,13 @@ body.posts {
 				}
 
 				.text {
-					padding-left: 50px;
 					text-align: left;
+					float: right;
+					max-width: 75%;
 
 					h3.name {
-						font-size: 35px;
-						line-height: 50px;
+						font-size: 28px;
+						line-height: 40px;
 						margin: 0;
 						padding: 0;
 						margin-bottom: 5px;
@@ -220,15 +223,149 @@ body.posts {
 						padding: 0;
 						margin: 0;
 						font-size: 16px;
-						line-height: 25px;
+						line-height: 24px;
 						text-indent: 0;
 						color: #aaa;
-
-						max-width: calc(630px - 100px - 55px);
 					}
 				}
 
 			}
+		}
+	}
+}
+
+@media (max-width: 960px) {
+	body.posts.show {
+		.header {
+			width: 100%;
+			.title {
+				font-size: 40px;
+				line-height: 40px;
+			}
+			.subtitle {
+				font-size: 20px;
+				line-height: 1.2;
+				width: 80%;
+				margin: 10px auto;
+			}
+		}
+		article {
+			width: 90%;
+			margin: 0 auto;
+
+			p {
+				text-indent: 0;
+			}
+		}
+
+		.actions {
+			width: 90%;
+			margin: 50px auto 0 auto;
+		}
+
+		.tags {
+			width: 90%;
+			margin: 20px auto 40px auto;
+
+			.tag {
+				margin-bottom: 10px;
+			}
+		}
+
+		.info {
+			.author {
+				width: 50%;
+				.text {
+					h3.name {
+						font-size: 20px;
+						line-height: 1.4;
+					}
+					p {
+						font-size: 12px;
+						line-height: 1.4;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+@media (max-width: 380px) {
+	body.posts.show {
+		.header {
+			width: 100%;
+			margin-top: 80px;
+			.title {
+				font-size: 25px;
+				line-height: 25px;
+			}
+			.subtitle {
+				font-size: 18px;
+				line-height: 1.2;
+				width: 80%;
+				margin: 10px auto;
+			}
+		}
+		article {
+			width: 90%;
+			margin: 0 auto;
+			font-size: 14px;
+
+			h1 {
+				font-size: 18px;
+			}
+
+			h2, h3 {
+				font-size: 14px;
+			}
+
+			p {
+				text-indent: 0;
+			}
+
+			blockquote {
+				width: 100%;
+			}
+
+			pre {
+				code {
+					font-size: 9px;
+				}
+			}
+		}
+
+		.actions {
+			width: 90%;
+			margin: 50px auto 0 auto;
+			font-size: 14px;
+		}
+
+		.tags {
+			width: 90%;
+			margin: 20px auto 40px auto;
+			font-size: 14px;
+
+			.tag {
+				margin-bottom: 10px;
+			}
+		}
+
+		.info {
+			.author {
+				width: 50%;
+				.text {
+					h3.name {
+						font-size: 14px;
+						line-height: 1.4;
+					}
+					p {
+						font-size: 9px;
+						line-height: 1.4;
+					}
+				}
+			}
+
 		}
 	}
 }

@@ -5,6 +5,7 @@ source 'https://ruby.taobao.org'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'mongoid'
+gem 'mongoid_auto_increment_id', github: 'huacnlee/mongoid_auto_increment_id'
 gem 'slim-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -35,10 +36,23 @@ gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# configurations
+gem 'settingslogic'
+gem 'rails-timeago'
+gem "autoprefixer-rails"
+# monitoring
+gem 'newrelic_rpm'
+gem 'newrelic_moped'
+gem 'newrelic-redis'
+
+# sitemap
+gem 'sitemap_generator'
+
+gem 'kaminari'
 gem 'devise'
 gem 'cancancan'
 gem 'sidekiq'
-gem 'rails-admin'
+gem 'rails_admin'
 
 gem 'font-awesome-rails'
 gem 'nprogress-rails'
@@ -47,18 +61,28 @@ gem 'nprogress-rails'
 gem 'carrierwave'
 gem 'carrierwave-qiniu'
 
-gem 'mongoid_auto_increment_id'
 gem 'letter_opener'
 
 gem 'angularjs-rails'
 
-gem 'newrelic_rpm'
+
+# Markdown
+gem 'redcarpet'
+gem 'rouge'
+gem 'auto-space'
+gem 'md_emoji'
+gem 'rails_autolink'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rack-mini-profiler'
+
+  gem 'mongoid_colored_logger'
+  gem 'colorize'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

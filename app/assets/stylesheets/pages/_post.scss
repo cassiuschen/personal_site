@@ -23,6 +23,7 @@ body.posts {
 				font-weight: bold;
 				color: $black;
 				margin: 0;
+				margin-bottom: 10px;
 				line-height: 60px;
 				width: 100%;
 				max-width: 100%;
@@ -30,11 +31,11 @@ body.posts {
 				
 			}
 			.subtitle {
-				font-size: 32px;
+				font-size: 26px;
 				font-weight: lighter;
 				color: #aaa;
 				margin: 0;
-				line-height: 38px;
+				line-height: 35px;
 				width: 100%;
 				max-width: 100%;
 				text-align: center;
@@ -42,16 +43,115 @@ body.posts {
 			}
 
 		}
-
-		p {
+		article {
 			width: 100%;
-			font-size: 22px;
-			line-height: 33px;
-			text-indent: 2em;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #555;
+
+			* {
+				color: inherit;
+			}
+
+			h1 {
+				text-align: center;
+				font-size: 28px;
+				line-height: 50px;
+				margin-top: 25px;
+				width: 100%;
+				border-bottom: 1px solid #eee;
+			}
+
+			h2, h3 {
+				font-size: 18px;
+				line-height: 40px;	
+				margin-top: 25px !important;
+				border-left: 5px solid #aaa;
+				padding-left: 15px;
+				border-bottom: 1px dashed #eee;
+			}
+
+			h4 {
+				font-size: 18px;
+				line-height: 25px;	
+				margin-top: 15px;
+			}
+
+			h1, h2, h3, h4, h5 {
+				
+				margin-top: 15px;
+				font-weight: bold;
+			}
+
+			code {
+				background-color: #f7f7f7;
+				border-radius: 4px;
+				padding: 5px 8px;
+				font-size: inherit;
+				margin: 0 3px;
+
+				&:hover {
+					background-color: #eee;
+				}
+			}
+
+			pre {
+				padding: 15px 20px;
+				background-color: #f7f7f7;
+				border-radius: 8px;
+				overflow-y: auto;
+				code {
+					background:none;
+					margin: 0;
+					color: #777;
+					padding: 0;
+
+					&:hover {
+						background: none;
+					}
+				}
+			}
+
+			ul, ol, li {
+				font-size: inherit;
+				color: inherit;
+				line-height: inherit;
+
+			}
+
+			blockquote {
+				@extend %quote;
+				width: 80%;
+				margin: 0 auto;
+				font-style: italic;
+				color: #aaa;
+				font-size: 14px;
+				line-height: 1.8;
+
+
+				p {
+					padding: 10px 15px;
+					font-style: inherit;
+					text-indent: 0;
+					color: inherit;
+					font-size: inherit;
+					line-height: inherit;
+					border-bottom: 1px dashed #eee;
+				}
+			}
+			
+			p {
+				margin: 12px 0;
+				padding: 0;
+				text-indent: 2em;
+				font-size: inherit;
+				line-height: inherit;
+			}
 		}
 
 		.actions {
 			width: 100%;
+			margin-top: 50px;
 
 			span {
 				display: inline-block;

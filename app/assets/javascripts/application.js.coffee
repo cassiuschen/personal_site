@@ -18,10 +18,12 @@
 #= require modernizr
 #= require snap-svg
 #= require notificationFX
+#= require rails-timeago-all
 #= require nprogress
 #= require nprogress-turbolinks
 # require nprogress-ajax-prototype
 #= require typed
+# require hightlight
 # require_tree .
 
 NProgress.configure
@@ -42,6 +44,7 @@ window.base =
   init: ->
     window.sidebarOpen = false
     window.base.sideBarToggle()
+    #hljs.initHighlightingOnLoad();
 
 window.notification = 
   info : (text) ->

@@ -5,6 +5,7 @@ require "action_mailer/railtie"
 require "rails/test_unit/railtie"
 require 'sprockets/railtie'
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -50,5 +51,8 @@ module PersonalWebsite
 #      authentication:       'login'
 #      #enable_starttls_auto: true
 #    }
+    Rack::MiniProfiler.config.position = 'right'
   end
 end
+
+require "markdown"

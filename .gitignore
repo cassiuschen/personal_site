@@ -17,5 +17,6 @@
 /tmp
 
 /config/initializers/qiniu.rb
+/config/application.yml
 
 dump.rdb

@@ -10,12 +10,12 @@
 
 .container
   .things
-    - 12.times
-      - for post in @posts
-        = link_to post_path(post), class: 'thing'
-          .content
-            .title
-              = post.title
-            .preview
-              = post.content
+    - for post in @posts
+      = link_to post_path(post), class: 'thing'
+        .content
+          .title
+            = post.title
+          .preview
+            = post.preview
+    = paginate @posts, :window => 2, :outer_window => 3
       

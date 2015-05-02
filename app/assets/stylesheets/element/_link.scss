@@ -1,0 +1,43 @@
+.link {
+	&.quote {
+		@extend %quote;
+	}
+	
+}
+
+%quote {
+	&::before {
+		left: -0.1em;
+		content: '[';
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+
+	&::after {
+		right: -0.1em;
+		content: ']';
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+
+	&::after, &::before {
+		position: absolute;
+		top: 0;
+		font-weight: 100;
+		font-size: 150%;
+		line-height: 1;
+		opacity: 0;
+		-webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+		transition: opacity 0.2s, transform 0.2s;
+
+		&:hover {
+			opacity: 1;
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+	}
+}
+
+p a {
+	@extend %quote;
+}

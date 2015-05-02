@@ -13,7 +13,7 @@
  *= require font-awesome
  *= require notification
  * require_tree .
- *= require_self
+ * require_self
  */
 
 $nprogress-color: #f1f1f1;
@@ -31,14 +31,14 @@ $red: #e96b6c;
 
 
 html, body {
-	font-family: freight-text-pro, Georgia, Cambria, 'Times New Roman', Times, serif;
+	font-family: freight-text-pro, Georgia, Cambria, 'Times New Roman', Times, 'LiSong Pro Light', 'NSimSun', serif;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .title, .subtitle, .sub-title, .title>*, a.item, .btn, a {
-	font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+	font-family:  jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'LiHei Pro Medium', SimHei, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -222,6 +222,12 @@ a, a:hover, a:visited, a:active, a:link {
 				color: #999;
 				font-size: 14px;
 				line-height: 24px;
+
+				time {
+					color: inherit;
+					font-size: inherit;
+					line-height: inherit;
+				}
 
 				&:before {
 					content: '·';

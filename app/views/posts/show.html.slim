@@ -6,8 +6,8 @@
   .header
     h1.title = @post.title
     h5.subtitle = @post.subtitle
-  p
-    = @post.content
+  article
+    = @post.render
   .actions.clearfix
     = link_to like_post_path(@post), class: "btn blue #{(@liked)?('active'):('')}", id: 'big_like', remote: true
       i.fa.fa-heart-o
@@ -21,11 +21,12 @@
       i.fa.fa-bookmark-o
     a.btn.right
       i.fa.fa-share-alt
-  .tags
-    span.title TAGED IN
-    - 4.times
-      a.tag
-        | Test
+  - if @post.tags
+    .tags
+      span.title TAGED IN
+      - for tag in @post.tags_array
+        a.tag
+          = tag
 .info
   .container
     .author
@@ -46,7 +47,7 @@
       a
         | Cassius Chen
       span.timeago
-        | 2 days ago
+        = timeago_tag @post.created_at, :nojs => true, :limit => 100.days.ago
     .right
       .item
         = @post.viewer
@@ -57,7 +58,7 @@
         i.fa.fa-bookmark-o
       a.item
         i.fa.fa-share-alt
-      a.item.tab
-        | NEXT PAGE
+      - if @next_post
+        = link_to 'NEXT POST', @next_post, class: 'item tab'
   style
     | body>.info {padding-bottom: 100px;}

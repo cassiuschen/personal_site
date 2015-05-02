@@ -1,0 +1,19 @@
+defaults: &defaults
+  # Qiniu
+  qiniu:
+    access_key    : "ak"
+    secret_key    : 'sk'
+    bucket        : "bucket name"
+    bucket_domain : "domain"
+    bucket_private: false
+    block_size    : 4*1024*1024
+    protocol      : "http"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

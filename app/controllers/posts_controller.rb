@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, except: :index
   def index
-    @posts = Post.all
+    params[:page] ||= 1
+    @posts = Post.all.page params[:page]
   end
 
   def show
     @liked = liked?
     @post.visit
+    @next_post = @post.next_post
   end
 
   def like
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.where(uid: params[:id]).last
+    @post = Post.find /^(\d*)/.match(params[:id]).captures.join('')
   end
 
   def liked?

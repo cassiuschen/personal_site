@@ -20,5 +20,6 @@
 /config/application.yml
 
 /public/assets
+/public/uploads
 
 dump.rdb

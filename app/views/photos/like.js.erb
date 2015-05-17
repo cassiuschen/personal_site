@@ -1,0 +1,5 @@
+<%- info = "post.#{@flag.to_s}" %>
+window.notification.info("<%= t(info) %>");
+$('#liked').toggleClass('active');
+$('#big_like').toggleClass('active');
+$('#liked_people').text("<%= @photo.like %> People Liked.");

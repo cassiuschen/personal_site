@@ -4,7 +4,11 @@
 	.thing {
 		display: inline-block;
 		vertical-align: top;
-		width: 33.3333%;
+		width: 30%;
+		margin: 0;
+		padding: 0;
+		margin-left: 1%;
+		margin-right: 1%;
 		//padding: 5px;
 		margin-bottom: 25px;
 		.content {
@@ -24,25 +28,61 @@
 				line-height: 22px;
 				color: #aaa;
 			}
+		}
 
-			&:hover {
-				border-color: $blue;
-				box-shadow: 0 0 2px $blue;
+		&:hover {
+			.content {
+				border-color: #ddd;
+				box-shadow: 0 0 3px #ddd;
+			}
+		}
+
+		
+	}
+}
+
+@media (min-width: 960px) {
+	.things {
+		.thing {/*
+			&:nth-child(3n+1) {
+				margin-left: -15px;
 			}
 
+			&:nth-child(3n+2) {
+				margin: 0 10px;
+			}
 
+			&:nth-child(3n) {
+				margin-right: -15px;
+			}*/
+		}
+	}
+}
+@media (max-width: 960px) {
+	.things {
+		width: 90%;
+		margin: 0 auto;
+		.thing {
+			width: 45%;
+/*
+			&:nth-child(2n+1) {
+				float: left;
+			}
+
+			&:nth-child(2n) {
+				float: right;
+			} */
 		}
 
-		&:nth-child(3n+1) {
-			margin-left: -15px;
-		}
+		
+	}
+}
 
-		&:nth-child(3n+2) {
-			margin: 0 10px;
-		}
-
-		&:nth-child(3n) {
-			margin-right: -15px;
+@media (max-width: 500px) {
+	.things {
+		.thing {
+			width: 100%;
+			display: block;
 		}
 	}
 }

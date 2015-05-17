@@ -71,7 +71,7 @@
 			color: #777;
 
 			&:focus {
-				width: 180px;
+				width: 150px;
 			}
 		}
 
@@ -225,6 +225,8 @@
 		}
 		.item.tab {
 			float: right;
+		    padding-left: 35px;
+		    padding-right: 35px;
 		}
 	}
 

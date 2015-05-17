@@ -12,6 +12,13 @@
  *
  *= require font-awesome
  *= require notification
+ *= require 'masonry/basic'
+ *= require 'masonry/centered'
+ *= require 'masonry/fluid'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'masonry/right-to-left'
+ *= require 'masonry/transitions'
  * require_tree .
  * require_self
  */
@@ -29,7 +36,9 @@ $bg_black: #242424;
 $red: #e96b6c;
 
 
-
+.box {
+	background-color: transparent;
+}
 html, body {
 	font-family: freight-text-pro, Georgia, Cambria, 'Times New Roman', Times, 'LiSong Pro Light', 'NSimSun', serif;
 	margin: 0;

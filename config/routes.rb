@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  get 'e_sources/index'
+
+  get 'e_sources/show'
+
+  get 'e_sources/request'
+
+  get 'e_sources/download'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :posts, only: [:index, :show] do
+    member do
+      get 'like'
+    end
+  end
+
+  resources :photos, only: [:index, :show] do
     member do
       get 'like'
     end

@@ -1,0 +1,155 @@
+body.show {
+	@extend .invertBody;
+	.actions {
+		width: 100%;
+		margin-top: 50px;
+
+		span {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 10px;
+			height: 20px;
+			padding: 10px 0;
+			color: #aaa;
+			line-height: 20px;
+			font-size: 14px;
+		}
+	}
+
+	.tags {
+		margin-top: 20px;
+		font-size: 0;
+		margin-bottom: 40px;
+
+		span {
+			display: block;
+			font-size: 12px;
+			line-height: 18px;
+			font-weight: bold;
+			color: #777;
+			margin-bottom: 5px;
+		}
+	}
+
+	.info {
+		width: 100%;
+		border-top: 1px solid #eee;
+		background-color: #f7f7f7;
+		padding-top: 38px;
+
+		.author {
+			@extend .clearfix;
+			width: 500px;
+			margin: 0 auto;
+
+			.avatar, .text {
+				display: inline-block;
+			}
+
+			.avatar {
+				width: 20%;
+				float: left;
+				img {
+					width: 100%;
+					border-radius: 8px;
+				}
+			}
+
+			.text {
+				text-align: left;
+				float: right;
+				max-width: 75%;
+
+				h3.name {
+					font-size: 28px;
+					line-height: 40px;
+					margin: 0;
+					padding: 0;
+					margin-bottom: 5px;
+					color: #999;
+				}
+				p {
+					padding: 0;
+					margin: 0;
+					font-size: 16px;
+					line-height: 24px;
+					text-indent: 0;
+					color: #aaa;
+				}
+			}
+
+		}
+	}
+}
+
+@media (max-width: 960px) {
+	body.show {
+
+		.actions {
+			width: 90%;
+			margin: 50px auto 0 auto;
+		}
+
+		.tags {
+			width: 90%;
+			margin: 20px auto 40px auto;
+
+			.tag {
+				margin-bottom: 10px;
+			}
+		}
+
+		.info {
+			.author {
+				width: 50%;
+				.text {
+					h3.name {
+						font-size: 20px;
+						line-height: 1.4;
+					}
+					p {
+						font-size: 12px;
+						line-height: 1.4;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+@media (max-width: 380px) {
+	body.show {
+		.actions {
+			width: 90%;
+			margin: 50px auto 0 auto;
+			font-size: 14px;
+		}
+
+		.tags {
+			width: 90%;
+			margin: 20px auto 40px auto;
+			font-size: 14px;
+
+			.tag {
+				margin-bottom: 10px;
+			}
+		}
+
+		.info {
+			.author {
+				width: 50%;
+				.text {
+					h3.name {
+						font-size: 14px;
+						line-height: 1.4;
+					}
+					p {
+						font-size: 9px;
+						line-height: 1.4;
+					}
+				}
+			}
+		}
+	}
+}

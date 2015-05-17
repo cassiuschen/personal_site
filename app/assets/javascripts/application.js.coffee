@@ -13,9 +13,12 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
-#= require turbolinks
 #= require classie
 #= require modernizr
+#= require masonry/jquery.masonry
+#= require masonry/jquery.imagesloaded.min
+#= require masonry/jquery.infinitescroll.min
+#= require turbolinks
 #= require snap-svg
 #= require notificationFX
 #= require rails-timeago-all
@@ -39,11 +42,30 @@ window.base =
       $('body').toggleClass "nav-open"
       window.sidebarOpen = !(window.sidebarOpen)
       if window.sidebarOpen == true
+        $('a.link').click ->
+          $('body').removeClass "nav-open"
         $('.dimmer').click ->
           $('body').removeClass "nav-open"
+
+  horizonCenter : (el) ->
+    windowWidth = $(window).width()
+    elWidth = $(el).width()
+    $(el).css 'left', ((windowWidth - elWidth) / 2)
+  pinterestLayout : ->
+    $pinterest = $('.things').masonry
+      itemSelector: '.thing'
+      gutterWidth: 5
+      isAnimated: true
+    $pinterest.imagesLoaded ->
+      console.log 'pinterest'
+      $pinterest.masonry
+        itemSelector: '.thing'
+        gutterWidth: 5
+        isAnimated: true
   init: ->
     window.sidebarOpen = false
     window.base.sideBarToggle()
+    window.base.pinterestLayout()
     #hljs.initHighlightingOnLoad();
 
 window.notification = 

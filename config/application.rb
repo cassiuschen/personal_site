@@ -51,8 +51,9 @@ module PersonalWebsite
 #      authentication:       'login'
 #      #enable_starttls_auto: true
 #    }
-    Rack::MiniProfiler.config.position = 'right'
   end
 end
 
 require "markdown"
+
+

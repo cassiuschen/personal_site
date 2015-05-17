@@ -33,9 +33,9 @@
       = image_tag 'avatar.jpg'
     .text
       h3.name
-        | Cassius Chen
+        = Settings.author.name
       p
-        | Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward).
+        = Settings.author.description
 
 - content_for :tab do
 
@@ -44,7 +44,7 @@
       a.avatar.round
         = image_tag 'avatar.jpg'
       a
-        | Cassius Chen
+        = Settings.author.name
       span.timeago.hide-m
         = timeago_tag @post.created_at, :nojs => true, :limit => 100.days.ago
     .right

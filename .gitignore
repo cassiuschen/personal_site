@@ -19,4 +19,6 @@
 /config/initializers/qiniu.rb
 /config/application.yml
 
+/public/assets
+
 dump.rdb

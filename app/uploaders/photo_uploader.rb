@@ -1,27 +1,18 @@
 # encoding: utf-8
 
 class PhotoUploader < CarrierWave::Uploader::Base
-
+  storage :qiniu
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  unless Rails.env.production?
-    storage :file
-  else
-    storage :qiniu
-  end
-  # storage :fog
+  # unless Rails.env.production?
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    unless Rails.env.production?
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    else
-      "photo-#{model.id}"
-    end
+    "photos"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -55,5 +46,13 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def qiniu_async_ops
+    commands = []
+    %W(small little middle large).each do |style|
+      commands << "http://#{self.qiniu_bucket_domain}/#{self.store_dir}/#{self.filename}/#{style}"
+    end
+    commands
+  end
 
 end

@@ -4,16 +4,12 @@ class Post
   include Mongoid::Timestamps
   include Likeable
   include Countable
+  include Tagable
   include ActionView::Helpers
   field :title, type: String
   field :url_name, type: String
   field :subtitle, type: String
   field :content, type: String
-  field :tags, type: String
-
-  def tags_array
-    self.tags.split(',')
-  end
 
   def to_param  
     "#{id}#{(url_name)?('-' + url_name.gsub(' ','-')):('')}"  

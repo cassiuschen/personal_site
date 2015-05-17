@@ -1,15 +1,15 @@
 /.about
-  .name
+  .main-info
     .avatar
       /= image_tag 'avatar.jpg'
     .name
-      | Cassius Chen
+      = Settings.author.name
     .des
-      | Rubyist.....
+      = Settings.author.description
   .info
     .content
       h3.title
         | Protocal
       p
-        - 10000.times
+        /- 10000.times
           | Somethings...

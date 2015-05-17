@@ -25,7 +25,8 @@ canvas#dots.fadeIn.delay
 
 .control-bar
   = link_to 'Blog', posts_path, class: 'action item'
-  - 3.times
+  = link_to 'Photo', photos_path, class: 'action item'
+  - 2.times
     a.action.item
       | SomeAction
 

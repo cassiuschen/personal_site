@@ -1,0 +1,76 @@
+- content_for :nav_info do
+  a.avatar
+    = image_tag 'avatar.jpg'
+
+- bg_color = @photo.main_color
+- bg_o = 0.2
+.linear-header style="#{linear_top_to_bottom('rgba(255,255,255,0)', c_to_a(bg_color, bg_o))}"
+.image-display style="background-color:#{c_to_a(bg_color, bg_o)}"
+  /.bg style="background-image: url(#{@photo.file.url})"
+  .image
+    = image_tag @photo.xlarge, class: 'full-width', style: "border-color: #{@photo.border_color}"
+  .title
+    = @photo.title
+  - if @photo.raw_exif
+    .exif
+      .container
+        - for (k,v) in @photo.exif
+          .exif_block
+            span.title = t("photo.#{k}")
+            = v
+.after style="#{linear_top_to_bottom(c_to_a(bg_color, bg_o), 'rgba(255,255,255,0)')}"
+.container
+  .actions.clearfix
+    = link_to like_photo_path(@photo), class: "btn blue #{(@liked)?('active'):('')}", id: 'big_like', remote: true
+      i.fa.fa-heart-o
+      |  Like
+    span#liked_people.hide-m
+      = @photo.like
+      | People Liked.
+    a.btn.right
+      i.fa.fa-angle-down
+    a.btn.right
+      i.fa.fa-bookmark-o
+    a.btn.right
+      i.fa.fa-share-alt
+  - if @photo.tags
+    .tags
+      span.title TAGED IN
+      - for tag in @photo.tags_array
+        a.tag
+          = tag
+.info
+  .author
+    a.avatar
+      = image_tag 'avatar.jpg'
+    .text
+      h3.name
+        = Settings.author.name
+      p
+        = Settings.author.description
+
+  
+- content_for :tab do
+
+  .controlTab
+    .item.name.hide-xm
+      a.avatar.round
+        = image_tag 'avatar.jpg'
+      a
+        = Settings.author.name
+      span.timeago.hide-m
+        = timeago_tag @photo.created_at, :nojs => true, :limit => 100.days.ago
+    .right
+      .item.hide-xm
+        = @photo.viewer
+        |  People read
+      = link_to like_photo_path(@photo), class: "item #{(@liked)?('active'):('')} margin-left-xm", id: 'liked', remote: true
+        i.fa.fa-heart-o
+      a.item
+        i.fa.fa-bookmark-o
+      a.item
+        i.fa.fa-share-alt
+      - if @next_photo
+        = link_to 'NEXT PHOTO', @next_photo, class: 'item tab'
+  style
+    | body>main>.info {padding-bottom: 100px;}

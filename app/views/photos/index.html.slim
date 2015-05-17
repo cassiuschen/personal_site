@@ -1,0 +1,33 @@
+- content_for :nav_info do
+  .title.item
+    | Photo
+  .input.item.icon
+    input.search placeholder="Search..."
+    i.fa.fa-search
+
+
+
+
+.container
+  .things.transitions-enabled.infinite-scroll.clearfix
+    - for photo in @photos
+      = link_to photo_path(photo), class: 'thing box'
+        /.thumb style="background-image: url(#{photo.small})"
+        = image_tag photo.small
+        .content
+          .preview
+            = photo.title
+      = paginate @photos, :window => 2, :outer_window => 3
+
+javascript:
+  $(function(){
+    $('.things').masonry({
+        itemSelector: '.thing',
+        columnWidth: 8,
+        gutterWidth: 0
+      });
+    console.log('run this')
+  })
+  
+    
+ 

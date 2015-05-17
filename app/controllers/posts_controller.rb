@@ -14,12 +14,12 @@ class PostsController < ApplicationController
   def like
     unless liked?
       @post.do_like
-      session["liked_#{@post.id}".to_sym] = @post.id
+      session["liked_post_#{@post.id}".to_sym] = @post.id
       puts "liked_#{@post.id}".to_sym, session["liked_#{@post.id}".to_sym]
       @flag = :like
     else
       @post.dislike
-      session["liked_#{@post.id}".to_sym] = nil
+      session["liked_post_#{@post.id}".to_sym] = nil
       @flag = :dislike
     end
   end
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def liked?
     if @post
-      !!(session["liked_#{@post.id}".to_sym])
+      !!(session["liked_post_#{@post.id}".to_sym])
     else
       false
     end

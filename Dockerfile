@@ -10,5 +10,19 @@ RUN ["./configure"]
 RUN make -j2
 RUN make install -j2
 RUN ruby -v
+ADD config/nginx.conf /etc/nginx/conf.d/personal_site.conf
+RUN mkdir -pv /var/data
+WORKDIR /var/data
+RUN add ./ /var/data/personal_site
+WORKDIR /var/data/personal_site
+RUN mkdir -pv tml/{pids,sockets}
+ENV RAILS_ENV production
+RUN bundle install -V
+RUN rake assets:precompile
+RUN rake db:seed
+RUN chmod 777 start
+RUN ./start
 EXPOSE 80
 EXPOSE 22
+
+CMD ["/var/data/personal_site/start"]

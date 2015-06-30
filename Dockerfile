@@ -18,8 +18,6 @@ WORKDIR /var/data/personal_site
 RUN mkdir -pv tmp/{pids,sockets}
 ENV RAILS_ENV docker
 RUN bundle install -V
-RUN rake assets:precompile
-RUN rake db:seed
 RUN chmod 777 start
 RUN ./start
 EXPOSE 80

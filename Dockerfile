@@ -16,7 +16,7 @@ WORKDIR /var/data
 ADD ./ /var/data/personal_site
 WORKDIR /var/data/personal_site
 RUN mkdir -pv tmp/{pids,sockets}
-RUN gem install bundler -V
+RUN gem install bundler --verbose
 ENV RAILS_ENV docker
 RUN bundle install -V
 RUN chmod 777 start

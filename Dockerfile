@@ -13,7 +13,7 @@ RUN ruby -v
 ADD config/nginx.conf /etc/nginx/conf.d/personal_site.conf
 RUN mkdir -pv /var/data
 WORKDIR /var/data
-RUN add ./ /var/data/personal_site
+ADD ./ /var/data/personal_site
 WORKDIR /var/data/personal_site
 RUN mkdir -pv tmp/{pids,sockets}
 ENV RAILS_ENV docker

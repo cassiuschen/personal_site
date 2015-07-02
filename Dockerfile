@@ -19,7 +19,7 @@ RUN mkdir -pv tmp/{pids,sockets}
 RUN gem install --no-rdoc --no-ri bundler
 ENV RAILS_ENV docker
 RUN bundle install -V
-RUN chmod 777 start
+RUN chmod 777 start.sh
 EXPOSE 80
 
 CMD ["/var/data/personal_site/start"]

@@ -53,8 +53,7 @@ daemonize false
 # stdout_redirect '/u/apps/lolcat/log/stdout', '/u/apps/lolcat/log/stderr'
 # stdout_redirect '/u/apps/lolcat/log/stdout', '/u/apps/lolcat/log/stderr', true
 stdout_redirect "#{APP_ROOT}/log/puma.log","#{APP_ROOT}/log/puma.err.log"
-pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
-state_path "#{APP_ROOT}/tmp/pids/puma.state"
+
 # Disable request logging.
 #
 # The default is "false".

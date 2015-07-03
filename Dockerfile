@@ -28,4 +28,4 @@ ENV REDIS_HOST 10.10.71.37
 RUN rake assets:precompile
 EXPOSE 80
 
-CMD ["sh /var/data/personal_site/start.sh"]
+CMD ["sh", "/var/data/personal_site/start.sh"]

@@ -1,4 +1,8 @@
-source 'https://rubygems.org'
+unless ENV["LOCATION"] == 'china'
+  source 'https://rubygems.org'
+else
+  source 'https://ruby.taobao.org'
+end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

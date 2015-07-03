@@ -17,3 +17,6 @@ test:
 
 production:
   <<: *defaults
+
+docker:
+  <<: *defaults

@@ -10,13 +10,21 @@
 
 .container
   .things.transitions-enabled.infinite-scroll.clearfix
-    - 12.times
-      - for post in @posts
-        = link_to post_path(post), class: 'thing box'
-          .content
-            .title
-              = post.title
-            .preview
-              = post.preview
+    - for post in @posts
+      = link_to post_path(post), class: 'thing box'
+        .content
+          .title
+            = post.title
+          .preview
+            = post.preview
     = paginate @posts, :window => 2, :outer_window => 3
-      
+
+javascript:
+  $(function(){
+    $('.things').masonry({
+        itemSelector: '.thing',
+        columnWidth: 8,
+        gutterWidth: 0
+      });
+    console.log('run this')
+  })

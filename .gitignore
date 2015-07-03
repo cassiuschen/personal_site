@@ -17,7 +17,7 @@
 /tmp
 
 /config/initializers/qiniu.rb
-/config/application.yml
+/config/docker_env.yml
 
 /public/assets
 /public/uploads
